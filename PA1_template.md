@@ -39,7 +39,7 @@ avgNumberSteps <- tapply(NoMissingData$steps, NoMissingData$interval, mean)
 plot(names(avgNumberSteps), avgNumberSteps, type = "l", xlab="5-Minute Time Interval in a Day", ylab="Average Number of Steps Across All Days") 
 ```
 
-![](PA1_template_files/figure-html/daily pattern-1.png)<!-- -->
+![](PA1_template_files/figure-html/dailypattern-1.png)<!-- -->
 
 ```r
 maxAvg <- max(avgNumberSteps)
@@ -95,7 +95,7 @@ totalNumberOfStepsPerDayNoNAs <- tapply(filledData$steps, filledData$date, sum)
 hist(totalNumberOfStepsPerDayNoNAs, main = "Total Number of Steps per Day by Replacing Missing Data")
 ```
 
-![](PA1_template_files/figure-html/calculations no NAs-1.png)<!-- -->
+![](PA1_template_files/figure-html/calculationsnoNAs-1.png)<!-- -->
 
 ```r
 totalMeanNoNAs <- mean(totalNumberOfStepsPerDayNoNAs)
@@ -121,6 +121,6 @@ plot(names(avgStepsWeekdays), avgStepsWeekdays, type = "l", xlab="5-Minute Time 
 plot(names(avgStepsWeekend), avgStepsWeekend, type = "l", xlab="5-Minute Time Interval in a Day", ylab="Weekends")
 ```
 
-![](PA1_template_files/figure-html/weekdays or weekends-1.png)<!-- -->
+![](PA1_template_files/figure-html/weekdaysorweekends-1.png)<!-- -->
 
 From the graph above we can conclude that from the observed sample data there are more steps taken in weekends than on weekdays. That might be explained because the subject in question could have a sedentary life at work.

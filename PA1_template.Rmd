@@ -9,7 +9,7 @@ output:
 # Assignment 
 
 ## Loading and preprocessing the data
-```{r load data}
+```{r loaddata}
 data <- read.csv("activity.csv")
 data$date <- as.Date(data$date, "%Y-%m-%d")
 ```
@@ -26,7 +26,7 @@ totalMedian <- median(totalNumberOfStepsPerDay)
 The mean and median of the total number of steps taken per day are `r totalMean` and `r totalMedian` respectively.
 
 ## What is the average daily activity pattern?
-```{r daily pattern}
+```{r dailypattern}
 avgNumberSteps <- tapply(NoMissingData$steps, NoMissingData$interval, mean)
 plot(names(avgNumberSteps), avgNumberSteps, type = "l", xlab="5-Minute Time Interval in a Day", ylab="Average Number of Steps Across All Days") 
 maxAvg <- max(avgNumberSteps)
@@ -36,7 +36,7 @@ posMaxAvg <- which.max( avgNumberSteps )
 The 5-minute interval with the highest average of steps accross all days was `r maxAvg` at `r paste0(substr(names(posMaxAvg),1,1), ":", substr(names(posMaxAvg),2,3))` am.
 
 ## Imputing missing values
-```{r missing values}
+```{r missingvalues}
 totalMissingValues <- sum(is.na(data$steps))
 ```
 
@@ -44,7 +44,7 @@ There are `r totalMissingValues` missing values (number of steps column) in the 
 
 In order to alleviate the missing value problem, we fill the missing data fields with the average of steps accross all days, we proceeded to use the following function to process the data:
 
-```{r Nas function}
+```{r Nasfunction}
 fillNAs <- function( df )
 {
 	#This function receives a dataframe with NAs in the steps column and replaces them with the average number of steps by interval accross all days.
@@ -74,7 +74,7 @@ filledData <- fillNAs(data)
 We can appreciate that there are no NAs in our new dataframe filledData: `r sum(is.na(filledData))`.
 Performing the same analysis with the complemented data we have:
 
-```{r calculations no NAs}
+```{r calculationsnoNAs}
 totalNumberOfStepsPerDayNoNAs <- tapply(filledData$steps, filledData$date, sum)
 hist(totalNumberOfStepsPerDayNoNAs, main = "Total Number of Steps per Day by Replacing Missing Data")
 totalMeanNoNAs <- mean(totalNumberOfStepsPerDayNoNAs)
@@ -88,7 +88,7 @@ In general, we can observe an increment of steps toward the mean value reducing 
 
 We construct a time series plot with two panes to compare activity levels in terms of steps taken either in weekdays or weekends.
 
-```{r weekdays or weekends}
+```{r weekdaysorweekends}
 filledData$TypeOfDay <- factor(ifelse(weekdays(filledData$date) == "Saturday" | weekdays(filledData$date) == "Sunday", "weekend", "weekday"))
 weekdaysData <- filledData[filledData$TypeOfDay == "weekday",]
 weekendData <- filledData[filledData$TypeOfDay == "weekend",]
