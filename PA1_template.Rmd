@@ -15,7 +15,7 @@ data$date <- as.Date(data$date, "%Y-%m-%d")
 ```
 
 ## What is mean total number of steps taken per day?
-```{r No Missing Values}
+```{r NoMissingValues}
 NoMissingData <- na.omit(data)
 totalNumberOfStepsPerDay <- tapply(NoMissingData$steps, NoMissingData$date, sum)
 hist(totalNumberOfStepsPerDay, main = "Total Number of Steps per Day")

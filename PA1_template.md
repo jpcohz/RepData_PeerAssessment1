@@ -23,7 +23,7 @@ totalNumberOfStepsPerDay <- tapply(NoMissingData$steps, NoMissingData$date, sum)
 hist(totalNumberOfStepsPerDay, main = "Total Number of Steps per Day")
 ```
 
-![](PA1_template_files/figure-html/No Missing Values-1.png)<!-- -->
+![](PA1_template_files/figure-html/NoMissingValues-1.png)<!-- -->
 
 ```r
 totalMean <- mean(totalNumberOfStepsPerDay)
