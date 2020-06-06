@@ -7,7 +7,7 @@ fillWeekdays <- function(df)
 	{
 		if( weekdays(df$date) == "Saturday" || weekdays(df$date) == "Sunday")
 		{
-			
+		 	
 		}
 	}
 }
